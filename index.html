@@ -712,6 +712,17 @@
     .item .sub{font-size:.74rem}
     .item > .units{margin:0 12px 14px!important;font-size:.62rem!important}
   }
+  /* v32 · letra más legible en tarjetas compactas del celular */
+  @media (max-width:899px){
+    .stock-grid{gap:16px 8px!important}
+    .item > h3,.item > .price{padding:0 8px}
+    .item h3{font-size:.98rem!important;line-height:1.22;margin:0 0 6px;color:var(--cocoa)}
+    .item .price{font-size:1.15rem!important;margin:auto 0 4px}
+    .item .units{font-size:.7rem!important;letter-spacing:0!important;text-transform:none!important;font-weight:500!important;margin:0 8px 10px!important;white-space:nowrap!important;line-height:1.25;font-size:.64rem!important}
+    .stock-grid{gap:16px 6px!important}
+    .item > .add{width:calc(100% - 16px);margin:0 8px;min-height:38px;font-size:.7rem;font-weight:500;letter-spacing:.06em}
+  }
+  @media (max-width:359px){.stock-grid{grid-template-columns:1fr 1fr!important}}
 </style>
 
 <header class="nav">
