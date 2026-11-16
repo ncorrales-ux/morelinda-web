@@ -684,6 +684,34 @@
   .skin-chips{margin-top:4px;margin-bottom:6px}
   .tool-actions{flex-direction:column;align-items:center;gap:14px}
   .tool-actions .btn{width:100%}
+
+  /* v31 · productos más pequeños (ficha y "Todo lo que tengo en stock") */
+  @media (min-width:800px){.det-in{grid-template-columns:2fr 3fr}.gal .main{aspect-ratio:auto;max-height:440px;object-fit:contain;padding:28px}}
+  @media (max-width:799px){.gal{text-align:center}.gal .main{aspect-ratio:auto;width:auto;max-width:100%;height:min(42vh,320px);object-fit:contain;padding:16px 0;margin:0 auto;display:block}}
+  @media (min-width:900px){.stock-grid{grid-template-columns:repeat(4,1fr)!important;gap:28px 20px!important}}
+  @media (min-width:1200px){.stock-grid{max-width:1100px;margin-left:auto;margin-right:auto}}
+  /* v31b · tarjetas compactas: 3 por fila en celular, 5 en computadora */
+  @media (max-width:899px){
+    .stock-grid{grid-template-columns:repeat(3,1fr)!important;gap:14px 8px!important}
+    .item{padding-bottom:10px}
+    .item .pic{margin-bottom:8px}
+    .item > .tag,.item > .sub,.item .more{display:none}
+    .item > h3,.item > .price{padding:0 7px}
+    .item h3{font-size:.84rem!important;line-height:1.2;min-height:2.4em;margin:0 0 4px}
+    .item .price{font-size:1rem!important;margin:auto 0 2px}
+    .item .units{font-size:.5rem!important;letter-spacing:.03em!important;margin:0 7px 8px!important;white-space:nowrap}
+    .item > .add{width:calc(100% - 14px);margin:0 7px;min-height:34px;font-size:.58rem;letter-spacing:.08em;padding:0 4px}
+    .item .add-x{display:none}
+  }
+  @media (min-width:900px){
+    .stock-grid{grid-template-columns:repeat(5,1fr)!important;gap:22px 16px!important}
+    .item > .tag,.item > h3,.item > .sub,.item > .price{padding:0 12px!important}
+    .item > .add{width:calc(100% - 24px)!important;margin:0 12px!important;font-size:.6rem}
+    .item h3{font-size:1.02rem!important}
+    .item .price{font-size:1.15rem!important}
+    .item .sub{font-size:.74rem}
+    .item > .units{margin:0 12px 14px!important;font-size:.62rem!important}
+  }
 </style>
 
 <header class="nav">
@@ -1102,7 +1130,7 @@ function renderGrid(){
       <p class="sub">${esc(p.sub)}</p>
       <p class="price">${money(p.precio)}</p>
       ${out ? "" : `<span class="units">${leftTxt(p)}</span>`}
-      <button class="btn btn-solid add" data-add="${p.id}" ${full ? "disabled" : ""}>${out ? "Agotado" : full ? "Ya está en tu carrito" : "Agregar al carrito"}</button>
+      <button class="btn btn-solid add" data-add="${p.id}" ${full ? "disabled" : ""}>${out ? "Agotado" : full ? "En tu carrito" : `Agregar<span class="add-x"> al carrito</span>`}</button>
       <button class="more" data-det="${p.id}">Ver detalles</button>
     </article>`;
   }).join("");
